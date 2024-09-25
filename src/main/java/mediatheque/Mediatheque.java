@@ -11,23 +11,21 @@ public class Mediatheque {
 	}
 	
 	public void printCatalog() {
-		BookPrinter bookPrinter = new BookPrinter();
-		CDPrinter cdPrinter = new CDPrinter();
+		ItemVisitor catalogPrinter = new CatalogPrinter();
 		for (Item i : items) {
-			i.accept(bookPrinter);
-			i.accept(cdPrinter);
+			i.accept(catalogPrinter);
 		}
 	}
 	
 	public void printOnlyBooks() {
-		BookPrinter bookPrinter = new BookPrinter();
+		ItemVisitor bookPrinter = new BookPrinter();
 		for (Item i : items) {
 			i.accept(bookPrinter);
 		}
 	}
 
 	public void printOnlyCDs() {
-		CDPrinter cdPrinter = new CDPrinter();
+		ItemVisitor cdPrinter = new CDPrinter();
 		for (Item i : items) {
 			i.accept(cdPrinter);
 		}
