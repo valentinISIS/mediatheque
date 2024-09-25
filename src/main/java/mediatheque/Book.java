@@ -14,10 +14,11 @@ public class Book extends Item {
 
 	public void setAuthor(String author) {
 		this.author = author;
-	}	
+	}
 
-	public void print() {
-		System.out.println(this);
+	@Override
+	public void accept(ItemVisitor visitor) {
+		visitor.visit(this);
 	}
 
 	@Override

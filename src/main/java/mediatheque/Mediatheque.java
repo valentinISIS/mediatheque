@@ -11,22 +11,25 @@ public class Mediatheque {
 	}
 	
 	public void printCatalog() {
-		for (Item i : items)
-			i.print();
+		BookPrinter bookPrinter = new BookPrinter();
+		CDPrinter cdPrinter = new CDPrinter();
+		for (Item i : items) {
+			i.accept(bookPrinter);
+			i.accept(cdPrinter);
+		}
 	}
 	
 	public void printOnlyBooks() {
-		throw new UnsupportedOperationException("Not supported yet."); 
-		/*
-		//avec instanceof
-		for (Item i : items)
-			if (i instanceof Book)
-				System.out.println(i);
-		*/
+		BookPrinter bookPrinter = new BookPrinter();
+		for (Item i : items) {
+			i.accept(bookPrinter);
+		}
 	}
 
 	public void printOnlyCDs() {
-		throw new UnsupportedOperationException("Not supported yet."); 
+		CDPrinter cdPrinter = new CDPrinter();
+		for (Item i : items) {
+			i.accept(cdPrinter);
+		}
 	}
-
 }
